@@ -1,37 +1,33 @@
-let save = document.getElementsByClassName('save')[0]
-let parent = document.getElementsByClassName('parent')[0]
-let note = document.getElementsByClassName('note')[0] 
-let title = document.getElementsByClassName('title')[0] 
-let card = document.getElementsByClassName('cardb')
-let delbtn = document.getElementsByClassName('delbtn')[0]
-let del = document.getElementsByClassName('delete');
-console.log(save);
-console.log(parent);
-console.log(note);
-console.log(title);
-var index=1
-btnhtml = ` <button class="rounded" ><b>Delete Note</b> </button>`
-console.log(btnhtml);
-save.addEventListener('click',function(){
-    if (title.value.length === 0 || note.value.length === 0) {
-        alert('Please insert title & Notes');
-    }else{
-        parent.innerHTML +=`<div class="card text-dark bg-light mx-2 my-1 cardb style="max-width: 18rem;">
-    <div class="card-header">Notes${index++}</div>
+let reset = document.getElementsByClassName('reset')[0];
+let save = document.getElementsByClassName('save')[0];
+let title = document.getElementsByClassName('title')[0];
+let note = document.getElementsByClassName('note')[0];
+let parent = document.getElementsByClassName('parent')[0];
+del = document.getElementsByClassName('del')[0]
+index = 1
+
+save.addEventListener('click',()=>{
+  if(title.value.length === 0 || note.value.length === 0){
+    alert('Please insert title & notes')
+  }
+  else{
+    parent.innerHTML += `<div class="card mx-1 my-1" style="max-width: 18rem;">
+    <div class=" d-block mx-auto rounded text-dark"><i>Note${index++}</i></div>
     <div class="card-body">
-    <h5 class="card-title">${title.value}</h5>
-    <p class="card-text">
-    ${note.value}</p>
-   <div>${btnhtml}</div>
-    </div>
-    </div>`
-    title.value = "";
-    note.value = "";
-    }
-})
-delbtn.addEventListener('click',()=>{
-    promp = confirm('You are really want to delete all notes')
-    if(promp == true){
-        parent.innerHTML = ""
-    }
+    <h5 class="card-title text-dark">${title.value}</h5>
+      <p class="card-text">${note.value}</p>
+      <button class="del rounded-pill px-3 py-1 d-block mx-auto" onclick="del(this)">Delete</button>
+      </div>
+  </div>`
+  title.value = ""
+  note.value = ""
+}})
+del = (e)=>{
+  e.parentElement.parentElement.remove()
+}
+reset.addEventListener('click',()=>{
+  conf = confirm('You are really want to delete all notes?')
+  if(conf === true){
+    parent.innerHTML = ""
+  }
 })
