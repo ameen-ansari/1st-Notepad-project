@@ -1,0 +1,8 @@
+.save:hover{
+    background-color:skyblue;
+    color: white;
+}
+.delete:hover{
+    background-color:rgb(11, 11, 11);
+    color: rgb(240, 240, 240);
+}
